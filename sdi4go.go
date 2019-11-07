@@ -130,8 +130,8 @@ func Constructor(f Factory) Option {
 	}
 }
 
-// sdi4go the golang inject objects sdi4go factory
-type sdi4go interface {
+// Injector the golang inject objects sdi4go factory
+type Injector interface {
 	// bind named object creator
 	Bind(name string, options ...Option) error
 	// Create object with name
@@ -148,7 +148,7 @@ type sdi4goImpl struct {
 }
 
 // New create a new golang struct sdi4go
-func New() sdi4go {
+func New() Injector {
 	return &sdi4goImpl{
 		registers: make(map[string]*objectRegister),
 	}
