@@ -220,8 +220,12 @@ func (impl *sdi4goImpl) Create(name string, objectPtr interface{}) error {
 
 		reflect.ValueOf(objectPtr).Elem().Set(reflect.ValueOf(val))
 
+		println(fmt.Sprintf("found %s val %p", name, val))
+
 		return nil
 	}
+
+	println("not found: " + name)
 
 	return ErrNotFound
 }
