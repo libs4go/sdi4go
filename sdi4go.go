@@ -367,11 +367,11 @@ func (impl *injector) Inject(sdi4go *sdi4goImpl) error {
 
 		if field.field.Type().Kind() == reflect.Interface {
 			if !register.ptrType.Implements(field.field.Type()) {
-				return ErrBindType
+				return errors.Wrap(ErrBindType, "service %s can't cast %v to %v", field.tag, register.ptrType, field.field.Type())
 			}
 		} else {
 			if field.field.Type().Elem() != register.objType {
-				return ErrBindType
+				return errors.Wrap(ErrBindType, "service %s type error", field.tag)
 			}
 		}
 
