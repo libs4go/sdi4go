@@ -1,10 +1,11 @@
 package sdi4go
 
 import (
-	"errors"
 	"fmt"
 	"reflect"
 	"strings"
+
+	"github.com/libs4go/errors"
 )
 
 // errors .
@@ -361,7 +362,7 @@ func (impl *injector) Inject(sdi4go *sdi4goImpl) error {
 		register, ok := sdi4go.registers[field.tag]
 
 		if !ok {
-			return ErrNotFound
+			return errors.Wrap(ErrNotFound, "can't find service %s", field.tag)
 		}
 
 		if field.field.Type().Kind() == reflect.Interface {

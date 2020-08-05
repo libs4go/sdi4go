@@ -2,6 +2,8 @@ github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/dynamicgo/xerrors v0.0.0-20190219051451-ec7525ce5de1 h1:bp3Xehls+lEKwcD2uaTXR8qgpSzkfCLuqKYOIOEG2TM=
 github.com/dynamicgo/xerrors v0.0.0-20190219051451-ec7525ce5de1/go.mod h1:ezv9/59uxF8okjzN/Vcc7pvy/x78Dr7+kP39BaigbVg=
+github.com/libs4go/errors v0.0.3 h1:5piHKdU4ECqQylqKGdDTjs/vyzZ7SQcReA7qD+E7www=
+github.com/libs4go/errors v0.0.3/go.mod h1:WLoMlTxoWMR2mXpnDHQdJnan3WXtCaFZ14QBesV2erM=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
