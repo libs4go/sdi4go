@@ -192,7 +192,7 @@ func (impl *sdi4goImpl) Create(name string, objectPtr interface{}) error {
 
 	objType := reflect.TypeOf(objectPtr)
 
-	if reflect.TypeOf(objType).Kind() != reflect.Ptr {
+	if objType.Kind() != reflect.Ptr {
 		return ErrObjectPtr
 	}
 
@@ -209,6 +209,11 @@ func (impl *sdi4goImpl) Create(name string, objectPtr interface{}) error {
 				debug("create type with name %s is type %s, but the bind target is %s", name, register.objType, objType)
 				return ErrBindType
 			}
+		} else if objType.Kind() == reflect.Struct {
+			if register.objType != objType {
+				debug("create type with name %s is type %s, but the bind target is %s", name, register.objType, objType)
+				return ErrBindType
+			}
 		} else {
 			return ErrObjectPtr
 		}
@@ -219,7 +224,11 @@ func (impl *sdi4goImpl) Create(name string, objectPtr interface{}) error {
 			return err
 		}
 
-		reflect.ValueOf(objectPtr).Elem().Set(reflect.ValueOf(val))
+		if objType.Kind() == reflect.Struct {
+			reflect.ValueOf(objectPtr).Elem().Set(reflect.ValueOf(val).Elem())
+		} else {
+			reflect.ValueOf(objectPtr).Elem().Set(reflect.ValueOf(val))
+		}
 
 		debug("found %s val %p", name, val)
 

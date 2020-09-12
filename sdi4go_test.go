@@ -27,6 +27,26 @@ type Hello interface {
 	SayHello()
 }
 
+type Property struct {
+	name  string
+	value string
+}
+
+func TestInjectorProperty(t *testing.T) {
+	sdi4go := New()
+
+	p := &Property{name: "test", value: "name"}
+
+	require.NoError(t, sdi4go.Bind("p", Singleton(p)))
+
+	var p1 Property
+
+	require.NoError(t, sdi4go.Create("p", &p1))
+
+	require.Equal(t, p1.name, p.name)
+
+	require.Equal(t, p1.value, p.value)
+}
 func TestInjectorGet(t *testing.T) {
 
 	sdi4go := New()
